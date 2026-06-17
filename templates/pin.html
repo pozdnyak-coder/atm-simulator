@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}ATM — Введите PIN{% endblock %}
+{% block content %}
+<div class="screen-title">● ВВЕДИТЕ PIN-КОД</div>
+
+<h2>Подтверждение</h2>
+<p style="margin-top:6px">Карта: <span style="font-family:var(--mono);color:var(--accent)">●●●● {{ card[-1] }}</span></p>
+
+{% if error %}
+<div class="alert alert-error" style="margin-top:16px">⚠ {{ error }}</div>
+{% endif %}
+
+<div class="pin-dots">
+  <div class="pin-dot"></div>
+  <div class="pin-dot"></div>
+  <div class="pin-dot"></div>
+  <div class="pin-dot"></div>
+</div>
+
+<form action="/verify_pin" method="post">
+  <div class="form-group">
+    <label>PIN-код (4 цифры)</label>
+    <input type="password" name="pin" id="pinInput"
+           placeholder="●●●●" maxlength="4"
+           autocomplete="off" autofocus
+           style="text-align:center;letter-spacing:8px;font-size:22px" required />
+  </div>
+  <button class="btn btn-primary" type="submit">Войти →</button>
+  <a href="/" class="btn btn-secondary">← Отмена</a>
+</form>
+{% endblock %}

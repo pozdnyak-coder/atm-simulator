@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}ATM — Операция выполнена{% endblock %}
+{% block content %}
+<div class="screen-title">● ОПЕРАЦИЯ ВЫПОЛНЕНА</div>
+
+<div class="success-icon">✅</div>
+<div class="success-msg">Успешно!</div>
+<div class="success-sub" style="margin-bottom:20px">{{ message }}</div>
+
+<div class="divider"></div>
+
+<div class="balance-display">
+  <div class="balance-label">Остаток на счёте</div>
+  <div class="balance-amount">
+    {{ "{:,.0f}".format(user.balance) }}<span class="balance-currency">сум</span>
+  </div>
+</div>
+
+<a href="/menu" class="btn btn-primary">← Вернуться в меню</a>
+<a href="/logout" class="btn btn-secondary">Завершить сессию</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}ATM — Главное меню{% endblock %}
+{% block content %}
+<div class="screen-title">● ГЛАВНОЕ МЕНЮ</div>
+
+<div class="user-chip">
+  <div class="user-avatar">{{ user.name[0] }}</div>
+  <div>
+    <div class="user-name">{{ user.name }}</div>
+    <div class="user-card-num">Карта: ●●●● {{ session.get('card_number', '')[-1] if session.get('card_number') else '' }}</div>
+  </div>
+</div>
+
+<p style="margin-bottom:4px">Выберите операцию:</p>
+
+<div class="menu-grid">
+  <a href="/balance" class="menu-btn">
+    <span class="icon">💰</span>
+    <span class="label">Баланс</span>
+  </a>
+  <a href="/withdraw" class="menu-btn">
+    <span class="icon">💸</span>
+    <span class="label">Снять</span>
+  </a>
+  <a href="/deposit" class="menu-btn">
+    <span class="icon">💳</span>
+    <span class="label">Внести</span>
+  </a>
+  <a href="/history" class="menu-btn">
+    <span class="icon">📋</span>
+    <span class="label">История</span>
+  </a>
+  <a href="/logout" class="menu-btn danger full">
+    <span class="icon">🚪</span>
+    <span class="label">Выйти</span>
+  </a>
+</div>
+{% endblock %}

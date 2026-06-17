@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}ATM — Вставьте карту{% endblock %}
+{% block content %}
+<div class="screen-title">● ДОБРО ПОЖАЛОВАТЬ</div>
+
+<h2>Добро пожаловать!</h2>
+<p style="margin-top:6px">Введите номер карты для входа</p>
+
+{% if error %}
+<div class="alert alert-error" style="margin-top:16px">⚠ {{ error }}</div>
+{% endif %}
+
+<form action="/enter_pin" method="post" style="margin-top:24px">
+  <div class="form-group">
+    <label>Номер карты</label>
+    <input type="text" name="card_number" placeholder="0000" maxlength="4"
+           autocomplete="off" autofocus style="text-align:center" required />
+  </div>
+  <button class="btn btn-primary" type="submit">Продолжить →</button>
+</form>
+
+<div class="demo-hint">
+  <strong>🎓 ДЕМО-КАРТЫ ДЛЯ ТЕСТИРОВАНИЯ:</strong>
+  Карта <b>1234</b> → PIN <b>1111</b> (баланс 150 000 сум)<br>
+  Карта <b>5678</b> → PIN <b>2222</b> (баланс 75 000 сум)<br>
+  Карта <b>9999</b> → PIN <b>0000</b> (баланс 500 000 сум)
+</div>
+{% endblock %}

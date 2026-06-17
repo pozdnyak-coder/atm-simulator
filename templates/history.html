@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}ATM — История операций{% endblock %}
+{% block content %}
+<div class="screen-title">● ИСТОРИЯ ОПЕРАЦИЙ</div>
+
+<div class="balance-display" style="margin-bottom:20px">
+  <div class="balance-label">Текущий баланс</div>
+  <div class="balance-amount">
+    {{ "{:,.0f}".format(user.balance) }}<span class="balance-currency">сум</span>
+  </div>
+</div>
+
+{% if user.history %}
+  {% for item in user.history %}
+  <div class="history-item">
+    <div class="h-left">
+      <div class="history-action">
+        {% if item.amount < 0 %}💸{% else %}💳{% endif %}
+        {{ item.action }}
+      </div>
+      <div class="history-time">{{ item.time }}</div>
+    </div>
+    <div class="history-amount {% if item.amount < 0 %}amount-minus{% else %}amount-plus{% endif %}">
+      {% if item.amount > 0 %}+{% endif %}{{ "{:,.0f}".format(item.amount) }} сум
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+  <div style="text-align:center;padding:32px 0;color:var(--muted)">
+    <div style="font-size:36px;margin-bottom:12px">📭</div>
+    <div>История пуста</div>
+    <div style="font-size:12px;margin-top:6px">Совершите первую операцию</div>
+  </div>
+{% endif %}
+
+<a href="/menu" class="btn btn-secondary" style="margin-top:12px">← Назад в меню</a>
+{% endblock %}

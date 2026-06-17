@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}ATM — Баланс{% endblock %}
+{% block content %}
+<div class="screen-title">● БАЛАНС СЧЁТА</div>
+
+<div class="user-chip">
+  <div class="user-avatar">{{ user.name[0] }}</div>
+  <div>
+    <div class="user-name">{{ user.name }}</div>
+    <div class="user-card-num">Текущий баланс</div>
+  </div>
+</div>
+
+<div class="balance-display">
+  <div class="balance-label">Доступные средства</div>
+  <div class="balance-amount">
+    {{ "{:,.0f}".format(user.balance) }}<span class="balance-currency">сум</span>
+  </div>
+</div>
+
+<p style="text-align:center;font-size:12px;color:var(--muted);margin-bottom:20px">
+  Последнее обновление: только что
+</p>
+
+<a href="/menu" class="btn btn-secondary">← Назад в меню</a>
+{% endblock %}
